@@ -659,10 +659,15 @@
             font-size: 3rem;
             font-weight: 800;
             margin: 16px 0;
+            transition: all 0.5s ease;
         }
 
         .comparacion-tiempo.antes { color: var(--zapping-red); }
         .comparacion-tiempo.despues { color: #2ECC71; }
+
+        .comparacion-tiempo:hover {
+            transform: scale(1.1);
+        }
 
         .comparacion-label {
             font-size: 0.85rem;
@@ -840,6 +845,75 @@
             border-top: 1px solid var(--zapping-gray-light);
         }
 
+        .phone-playing {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, #0D0D0D 0%, #1A1A1A 100%);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+        }
+
+        .phone-playing.active {
+            display: flex;
+        }
+
+        .playing-content {
+            text-align: center;
+        }
+
+        .playing-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--zapping-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .playing-channel {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .playing-status {
+            color: var(--zapping-red);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .playing-time {
+            color: var(--zapping-text-secondary);
+            font-size: 0.8rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .playing-back {
+            margin-top: 40px;
+            background: var(--zapping-gray-light);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .playing-back:hover {
+            background: var(--zapping-gray);
+        }
+
         .phone-nav-item {
             text-align: center;
             font-size: 0.6rem;
@@ -892,12 +966,60 @@
         }
 
         @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+            }
+
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
             }
 
             .storyboard-nav {
-                padding: 16px 20px;
+                padding: 12px 16px;
+                gap: 8px;
+            }
+
+            .nav-btn {
+                padding: 8px 12px;
+                font-size: 0.75rem;
+            }
+
+            .scene-header {
+                padding: 16px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .scene-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .scene-title h2 {
+                font-size: 1.2rem;
+            }
+
+            .scene-content {
+                padding: 16px;
+            }
+
+            .phone-frame {
+                max-width: 320px;
+            }
+
+            .interactive-mockup {
+                padding: 20px;
+            }
+
+            .mockup-title h2 {
+                font-size: 1.5rem;
+            }
             }
 
             .nav-btn {
@@ -928,6 +1050,37 @@
         <h1>Zapping <span>Rediseño</span></h1>
         <p class="subtitle">Vista en mosaico "Para ti ahora" y Filtros por categorías. Navegación en menos de 10 segundos.</p>
         <span class="hero-badge">PROTOTIPO INTERACTIVO</span>
+    </section>
+
+    <!-- FEEDBACK SECTION -->
+    <section style="max-width: 1400px; margin: 0 auto; padding: 40px 20px;">
+        <div style="background: var(--zapping-gray); border-radius: 16px; padding: 32px; border-left: 4px solid var(--zapping-red);">
+            <h2 style="font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
+                <span>📋</span> Retroalimentación de Pruebas Internas
+            </h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+                <div style="background: var(--zapping-gray-light); padding: 16px; border-radius: 8px;">
+                    <strong style="color: var(--zapping-red);">Feedback 1:</strong>
+                    <p style="color: var(--zapping-text-secondary); font-size: 0.9rem; margin-top: 8px;">"Los canales no se sienten reales - pongans nombres que existan en Chile"</p>
+                    <p style="color: #2ECC71; font-size: 0.8rem; margin-top: 8px;">✓ Corregido: Canales reales de Chile (Chilevisión, UCV TV, Mega, CNN Chile, 24 Horas, ESPN, etc.)</p>
+                </div>
+                <div style="background: var(--zapping-gray-light); padding: 16px; border-radius: 8px;">
+                    <strong style="color: var(--zapping-red);">Feedback 2:</strong>
+                    <p style="color: var(--zapping-text-secondary); font-size: 0.9rem; margin-top: 8px;">"La comparación antes/después está bien pero sería mejor con una animación"</p>
+                    <p style="color: #2ECC71; font-size: 0.8rem; margin-top: 8px;">✓ Corregido: Hover con scale y transición suave en los tiempos</p>
+                </div>
+                <div style="background: var(--zapping-gray-light); padding: 16px; border-radius: 8px;">
+                    <strong style="color: var(--zapping-red);">Feedback 3:</strong>
+                    <p style="color: var(--zapping-text-secondary); font-size: 0.9rem; margin-top: 8px;">"Falta mostrar qué pasa cuando el usuario selecciona un canal del mosaico"</p>
+                    <p style="color: #2ECC71; font-size: 0.8rem; margin-top: 8px;">✓ Corregido: Click en canal abre pantalla de reproducción con opción de volver</p>
+                </div>
+                <div style="background: var(--zapping-gray-light); padding: 16px; border-radius: 8px;">
+                    <strong style="color: var(--zapping-red);">Feedback 4:</strong>
+                    <p style="color: var(--zapping-text-secondary); font-size: 0.9rem; margin-top: 8px;">"Las escenas podrían adaptarse mejor a pantallas pequeñas"</p>
+                    <p style="color: #2ECC71; font-size: 0.8rem; margin-top: 8px;">✓ Corregido: Mejoras en responsividad para móvil y tablet</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- NAVIGATION -->
@@ -987,20 +1140,20 @@
                 <div class="scene-content">
                     <div class="problema-visual">
                         <div class="lista-actual">
-                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 1</span><span class="canal-nombre">TVN</span></div></div>
-                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 2</span><span class="canal-nombre">Chilevision</span></div></div>
-                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 3</span><span class="canal-nombre">Canal 13</span></div></div>
-                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 4</span><span class="canal-nombre">Mega</div></div></div>
-                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 5</span><span class="canal-nombre">UCV</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 2</span><span class="canal-nombre">Chilevisión</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 3</span><span class="canal-nombre">UCV TV</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 4</span><span class="canal-nombre">Mega</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 5</span><span class="canal-nombre">Chileone</span></div></div>
                             <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 6</span><span class="canal-nombre">La Red</span></div></div>
-                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 7</span><span class="canal-nombre">CNN Chile</span></div></div>
-                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 8</span><span class="canal-nombre">24 Horas</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 7</span><span class="canal-nombre">TV+</span></div></div>
                             <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 9</span><span class="canal-nombre">CDN</span></div></div>
-                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 10</span><span class="canal-nombre">ESPN</span></div></div>
-                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 11</span><span class="canal-nombre">Fox Sports</span></div></div>
-                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 12</span><span class="canal-nombre">HBO</span></div></div>
-                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 13</span><span class="canal-nombre">Star Channel</span></div></div>
-                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 14</span><span class="canal-nombre"> Warner</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 11</span><span class="canal-nombre">TVN</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 13</span><span class="canal-nombre">13 C</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 14</span><span class="canal-nombre">CNN Chile</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 15</span><span class="canal-nombre">24 Horas</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 21</span><span class="canal-nombre">ESPN</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 22</span><span class="canal-nombre">Fox Sports</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 24</span><span class="canal-nombre">HBO</span></div></div>
                         </div>
                         <div class="frustracion-panel">
                             <div class="cronometro">4:23</div>
@@ -1291,6 +1444,14 @@
                                     <span class="live-text">● EN VIVO</span>
                                 </div>
                             </div>
+                        <div class="phone-playing" id="phone-playing">
+                            <div class="playing-content">
+                                <div class="playing-icon">▶</div>
+                                <div class="playing-channel" id="playing-channel">CDF Premium</div>
+                                <div class="playing-status">● EN VIVO</div>
+                                <div class="playing-time">01:45:32</div>
+                            </div>
+                            <button class="playing-back" id="playing-back">← Volver al mosaico</button>
                         </div>
                         <div class="phone-nav">
                             <div class="phone-nav-item active">
@@ -1313,7 +1474,7 @@
                     </div>
                 </div>
                 <p style="text-align: center; margin-top: 24px; color: var(--zapping-text-secondary); font-size: 0.85rem;">
-                    💡 Haz clic en los filtros para ver cómo se reorganiza el mosaico
+                    💡 Haz clic en los filtros para filtrar o en un canal para "verlo en vivo"
                 </p>
             </div>
         </section>
@@ -1345,10 +1506,10 @@
             filter.addEventListener('click', () => {
                 document.querySelectorAll('.phone-filter').forEach(f => f.classList.remove('active'));
                 filter.classList.add('active');
-                
+
                 const category = filter.classList.contains('all') ? 'all' : filter.classList[1];
                 const tiles = document.querySelectorAll('.phone-tile');
-                
+
                 tiles.forEach(tile => {
                     if (category === 'all' || tile.dataset.category === category) {
                         tile.style.opacity = '1';
@@ -1359,6 +1520,20 @@
                     }
                 });
             });
+        });
+
+        // Channel click - show playing screen
+        document.querySelectorAll('.phone-tile').forEach(tile => {
+            tile.addEventListener('click', () => {
+                const channelName = tile.querySelector('.channel-name').textContent;
+                document.getElementById('playing-channel').textContent = channelName;
+                document.getElementById('phone-playing').classList.add('active');
+            });
+        });
+
+        // Back button
+        document.getElementById('playing-back').addEventListener('click', () => {
+            document.getElementById('phone-playing').classList.remove('active');
         });
 
         // Auto-scroll through scenes for demo
