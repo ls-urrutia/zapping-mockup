@@ -1496,8 +1496,6 @@
                 const sceneId = btn.dataset.scene;
                 document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
                 document.getElementById('scene-' + sceneId).classList.add('active');
-                
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
 
