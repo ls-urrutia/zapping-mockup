@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zapping - Mockup Mejora: Mosaico "Para ti ahora"</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --zapping-red: #E50914;
+            --zapping-dark: #0D0D0D;
+            --zapping-gray: #1A1A1A;
+            --zapping-gray-light: #2A2A2A;
+            --zapping-text: #FFFFFF;
+            --zapping-text-secondary: #A0A0A0;
+            --deportes: #FF6B35;
+            --noticias: #4ECDC4;
+            --entretenimiento: #9B59B6;
+            --peliculas: #F39C12;
+            --ninos: #2ECC71;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--zapping-dark);
+            color: var(--zapping-text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--zapping-dark) 0%, var(--zapping-gray) 100%);
+            padding: 60px 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--zapping-gray-light);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            color: var(--zapping-red);
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--zapping-text-secondary);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--zapping-red);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* STORYBOARD NAV */
+        .storyboard-nav {
+            background: var(--zapping-gray);
+            padding: 20px 40px;
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--zapping-gray-light);
+        }
+
+        .storyboard-nav::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .storyboard-nav::-webkit-scrollbar-thumb {
+            background: var(--zapping-gray-light);
+            border-radius: 2px;
+        }
+
+        .nav-btn {
+            background: var(--zapping-gray-light);
+            border: none;
+            color: var(--zapping-text-secondary);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: var(--zapping-red);
+            color: white;
+        }
+
+        /* SCENES CONTAINER */
+        .scenes-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .scene {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .scene.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* SCENE CARD */
+        .scene-card {
+            background: var(--zapping-gray);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .scene-header {
+            padding: 24px 32px;
+            border-bottom: 1px solid var(--zapping-gray-light);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .scene-number {
+            width: 48px;
+            height: 48px;
+            background: var(--zapping-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .scene-title h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .scene-title .context {
+            color: var(--zapping-text-secondary);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .scene-content {
+            padding: 32px;
+        }
+
+        /* SCENE 1 - CONTEXTO */
+        .contexto-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .andres-card {
+            background: var(--zapping-gray-light);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .andres-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .andres-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .andres-info p {
+            color: var(--zapping-text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .andres-info .time {
+            color: var(--zapping-red);
+            font-weight: 600;
+        }
+
+        .tv-preview {
+            background: #000;
+            border-radius: 12px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--zapping-gray-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tv-preview::before {
+            content: 'ZAPPING';
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--zapping-red);
+        }
+
+        .tv-preview .live-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--zapping-red);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* SCENE 2 - PROBLEMA */
+        .problema-visual {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .lista-actual {
+            background: #000;
+            border-radius: 12px;
+            padding: 16px;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 2px solid var(--zapping-red);
+        }
+
+        .lista-actual::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .lista-actual::-webkit-scrollbar-thumb {
+            background: var(--zapping-red);
+            border-radius: 3px;
+        }
+
+        .canal-item {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            background: var(--zapping-gray);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.5;
+        }
+
+        .canal-item:nth-child(1), .canal-item:nth-child(5), .canal-item:nth-child(10) {
+            opacity: 1;
+            border: 1px solid var(--zapping-gray-light);
+        }
+
+        .canal-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--zapping-gray-light);
+            border-radius: 8px;
+        }
+
+        .canal-info {
+            flex: 1;
+        }
+
+        .canal-numero {
+            font-size: 0.7rem;
+            color: var(--zapping-text-secondary);
+        }
+
+        .canal-nombre {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .frustracion-panel {
+            text-align: center;
+        }
+
+        .cronometro {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--zapping-red);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .cronometro-label {
+            color: var(--zapping-text-secondary);
+            margin-top: 8px;
+        }
+
+        .frustracion-icon {
+            font-size: 3rem;
+            margin-top: 16px;
+        }
+
+        /* SCENE 3 - IDEACION */
+        .ideacion-visual {
+            display: grid;
+            grid-template-columns: 0.6fr 1.4fr;
+            gap: 32px;
+        }
+
+        .idea-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .idea-item {
+            background: var(--zapping-gray-light);
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 3px solid var(--zapping-red);
+        }
+
+        .idea-item span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--zapping-text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .wireframe-container {
+            background: var(--zapping-gray-light);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .wireframe-title {
+            font-size: 0.85rem;
+            color: var(--zapping-text-secondary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .wireframe-mosaic {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .wireframe-tile {
+            aspect-ratio: 16/9;
+            background: var(--zapping-gray);
+            border-radius: 8px;
+            border: 2px dashed var(--zapping-text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: var(--zapping-text-secondary);
+        }
+
+        .referentes {
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .referente-tag {
+            background: var(--zapping-dark);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--zapping-text-secondary);
+        }
+
+        /* SCENE 4 - BENEFICIOS */
+        .beneficios-visual {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 32px;
+        }
+
+        .mosaico-preview {
+            background: #000;
+            border-radius: 12px;
+            padding: 16px;
+            aspect-ratio: 16/10;
+            position: relative;
+        }
+
+        .mosaico-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .filter-btn {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.all { background: white; color: black; }
+        .filter-btn.deportes { background: var(--deportes); color: white; }
+        .filter-btn.noticias { background: var(--noticias); color: white; }
+        .filter-btn.entretenimiento { background: var(--entretenimiento); color: white; }
+
+        .mosaico-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            height: calc(100% - 40px);
+        }
+
+        .mosaico-tile {
+            background: var(--zapping-gray);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mosaico-tile::after {
+            content: attr(data-live);
+            position: absolute;
+            bottom: 4px;
+            left: 4px;
+            font-size: 0.6rem;
+            background: rgba(0,0,0,0.7);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .tile-live {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 8px;
+            height: 8px;
+            background: var(--zapping-red);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .beneficios-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .beneficio-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: var(--zapping-gray-light);
+            border-radius: 12px;
+        }
+
+        .beneficio-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .beneficio-icon.clock { background: rgba(229, 9, 20, 0.2); }
+        .beneficio-icon.list { background: rgba(255, 107, 53, 0.2); }
+        .beneficio-icon.eye { background: rgba(78, 205, 196, 0.2); }
+
+        .beneficio-text h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .beneficio-text p {
+            font-size: 0.85rem;
+            color: var(--zapping-text-secondary);
+        }
+
+        /* SCENE 5 - IMPLEMENTACION */
+        .implementacion-visual {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .implementacion-step {
+            background: var(--zapping-gray-light);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: var(--zapping-red);
+            border-radius: 50%;
+            line-height: 32px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .step-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            font-size: 0.8rem;
+            color: var(--zapping-text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .step-preview {
+            background: #000;
+            border-radius: 8px;
+            aspect-ratio: 16/10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: var(--zapping-text-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-preview.mosaic::before {
+            content: '';
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px;
+            width: 60%;
+        }
+
+        .step-preview .mini-tile {
+            aspect-ratio: 16/9;
+            background: var(--zapping-gray);
+            border-radius: 4px;
+        }
+
+        .multiplataforma-note {
+            margin-top: 24px;
+            background: var(--zapping-gray);
+            border-radius: 12px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .device-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .device-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--zapping-gray-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .multiplataforma-text h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .multiplataforma-text p {
+            font-size: 0.85rem;
+            color: var(--zapping-text-secondary);
+        }
+
+        /* SCENE 6 - CONCLUSION */
+        .conclusion-visual {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .antes-despues {
+            background: var(--zapping-gray-light);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .antes-despues.despues {
+            border: 2px solid var(--zapping-red);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .status-badge.antes { background: var(--zapping-red); }
+        .status-badge.despues { background: var(--zapping-red); }
+
+        .comparacion-tiempo {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 16px 0;
+        }
+
+        .comparacion-tiempo.antes { color: var(--zapping-red); }
+        .comparacion-tiempo.despues { color: #2ECC71; }
+
+        .comparacion-label {
+            font-size: 0.85rem;
+            color: var(--zapping-text-secondary);
+        }
+
+        .comparacion-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .transformacion-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .transformacion-arrow span {
+            font-size: 2rem;
+        }
+
+        .transformacion-badge {
+            background: var(--zapping-red);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        /* INTERACTIVE MOCKUP */
+        .interactive-mockup {
+            margin-top: 60px;
+            padding: 40px;
+            background: var(--zapping-gray);
+            border-radius: 16px;
+        }
+
+        .mockup-title {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .mockup-title h2 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .mockup-title p {
+            color: var(--zapping-text-secondary);
+        }
+
+        .phone-frame {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 32px;
+            padding: 12px;
+            border: 3px solid var(--zapping-gray-light);
+        }
+
+        .phone-screen {
+            background: var(--zapping-dark);
+            border-radius: 24px;
+            aspect-ratio: 9/16;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .phone-header {
+            flex-shrink: 0;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .phone-logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--zapping-red);
+        }
+
+        .phone-time {
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .phone-content {
+            padding: 0 12px 12px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .phone-filters {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .phone-filter {
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .phone-filter.active {
+            filter: brightness(1.2);
+            transform: scale(1.05);
+        }
+
+        .phone-mosaic {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .phone-tile {
+            aspect-ratio: 16/10;
+            background: var(--zapping-gray);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-tile .live-dot {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 6px;
+            height: 6px;
+            background: var(--zapping-red);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        .phone-tile .live-text {
+            position: absolute;
+            bottom: 4px;
+            left: 4px;
+            font-size: 0.55rem;
+            background: rgba(0,0,0,0.7);
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+
+        .phone-tile .channel-name {
+            position: absolute;
+            bottom: 20px;
+            left: 4px;
+            right: 4px;
+            font-size: 0.6rem;
+            font-weight: 600;
+        }
+
+        .phone-tile.featured {
+            grid-column: span 2;
+            aspect-ratio: 16/8;
+        }
+
+        .phone-nav {
+            flex-shrink: 0;
+            background: var(--zapping-gray);
+            padding: 12px;
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid var(--zapping-gray-light);
+        }
+
+        .phone-nav-item {
+            text-align: center;
+            font-size: 0.6rem;
+            color: var(--zapping-text-secondary);
+        }
+
+        .phone-nav-item.active {
+            color: var(--zapping-red);
+        }
+
+        .phone-nav-item span {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--zapping-text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--zapping-gray-light);
+            margin-top: 60px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .contexto-visual,
+            .problema-visual,
+            .beneficios-visual {
+                grid-template-columns: 1fr;
+            }
+
+            .ideacion-visual {
+                grid-template-columns: 1fr;
+            }
+
+            .implementacion-visual {
+                grid-template-columns: 1fr;
+            }
+
+            .conclusion-visual {
+                grid-template-columns: 1fr;
+            }
+
+            .transformacion-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .storyboard-nav {
+                padding: 16px 20px;
+            }
+
+            .nav-btn {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+
+            .scene-header {
+                padding: 16px 20px;
+            }
+
+            .scene-content {
+                padding: 20px;
+            }
+        }
+
+        /* CATEGORY COLORS */
+        .deportes { background: var(--deportes); }
+        .noticias { background: var(--noticias); }
+        .entretenimiento { background: var(--entretenimiento); }
+        .peliculas { background: var(--peliculas); }
+        .ninos { background: var(--ninos); }
+    </style>
+</head>
+<body>
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Zapping <span>Rediseño</span></h1>
+        <p class="subtitle">Vista en mosaico "Para ti ahora" y Filtros por categorías. Navegación en menos de 10 segundos.</p>
+        <span class="hero-badge">PROTOTIPO INTERACTIVO</span>
+    </section>
+
+    <!-- NAVIGATION -->
+    <nav class="storyboard-nav">
+        <button class="nav-btn active" data-scene="1">1. Contexto</button>
+        <button class="nav-btn" data-scene="2">2. Problema</button>
+        <button class="nav-btn" data-scene="3">3. Ideación</button>
+        <button class="nav-btn" data-scene="4">4. Beneficios</button>
+        <button class="nav-btn" data-scene="5">5. Implementación</button>
+        <button class="nav-btn" data-scene="6">6. Conclusión</button>
+        <button class="nav-btn" data-scene="mockup">Mockup Interactivo</button>
+    </nav>
+
+    <!-- SCENES -->
+    <div class="scenes-container">
+        <!-- SCENE 1: CONTEXTO -->
+        <section class="scene active" id="scene-1">
+            <div class="scene-card">
+                <div class="scene-header">
+                    <div class="scene-number">1</div>
+                    <div class="scene-title">
+                        <h2>Contexto: el momento cotidiano del usuario</h2>
+                        <p class="context">Son las 21:30 de un miércoles. Andrés llega a casa después del trabajo.</p>
+                    </div>
+                </div>
+                <div class="scene-content">
+                    <div class="contexto-visual">
+                        <div class="andres-card">
+                            <div class="andres-avatar">👨</div>
+                            <div class="andres-info">
+                                <h3>Andrés, 32 años</h3>
+                                <p>Usuario frecuente de streaming en vivo</p>
+                                <p class="time">🕐 21:30 - Miércoles</p>
+                            </div>
+                        </div>
+                        <div class="tv-preview">
+                            <span class="live-badge">● EN VIVO</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 24px; color: var(--zapping-text-secondary); text-align: center;">
+                        Andrés quiere relajarse viendo algo en vivo. No tiene claro si ponerse un partido de fútbol, las noticias o una serie nacional. Solo sabe que quiere ver algo ahora.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENE 2: PROBLEMA -->
+        <section class="scene" id="scene-2">
+            <div class="scene-card">
+                <div class="scene-header">
+                    <div class="scene-number">2</div>
+                    <div class="scene-title">
+                        <h2>Problema: el scroll que no termina</h2>
+                        <p class="context">Guía de canales actual: lista lineal sin categorías ni orden.</p>
+                    </div>
+                </div>
+                <div class="scene-content">
+                    <div class="problema-visual">
+                        <div class="lista-actual">
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 1</span><span class="canal-nombre">TVN</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 2</span><span class="canal-nombre">Chilevision</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 3</span><span class="canal-nombre">Canal 13</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 4</span><span class="canal-nombre">Mega</div></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 5</span><span class="canal-nombre">UCV</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 6</span><span class="canal-nombre">La Red</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 7</span><span class="canal-nombre">CNN Chile</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 8</span><span class="canal-nombre">24 Horas</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 9</span><span class="canal-nombre">CDN</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 10</span><span class="canal-nombre">ESPN</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 11</span><span class="canal-nombre">Fox Sports</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 12</span><span class="canal-nombre">HBO</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 13</span><span class="canal-nombre">Star Channel</span></div></div>
+                            <div class="canal-item"><div class="canal-icon"></div><div class="canal-info"><span class="canal-numero">Canal 14</span><span class="canal-nombre"> Warner</span></div></div>
+                        </div>
+                        <div class="frustracion-panel">
+                            <div class="cronometro">4:23</div>
+                            <p class="cronometro-label">minutos scrolleando</p>
+                            <div class="frustracion-icon">😤</div>
+                            <p style="margin-top: 12px; color: var(--zapping-text-secondary); font-size: 0.85rem;">
+                                Sin contexto, sin categorías, sin saber si lo que busca está más arriba o más abajo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENE 3: IDEACION -->
+        <section class="scene" id="scene-3">
+            <div class="scene-card">
+                <div class="scene-header">
+                    <div class="scene-number">3</div>
+                    <div class="scene-title">
+                        <h2>Exploración de la idea: ¿y si la app mostrara lo que hay ahora?</h2>
+                        <p class="context">Síntesis de insights y referentes internacionales.</p>
+                    </div>
+                </div>
+                <div class="scene-content">
+                    <div class="ideacion-visual">
+                        <div class="idea-lista">
+                            <div class="idea-item">
+                                <span>Feedback Usuario</span>
+                                "prefiero el mosaico"
+                            </div>
+                            <div class="idea-item">
+                                <span>Feedback Usuario</span>
+                                "si hubiera categorías sería más fácil"
+                            </div>
+                            <div class="idea-item">
+                                <span>Feedback Usuario</span>
+                                "quiero ver qué hay ahora"
+                            </div>
+                            <div class="idea-item" style="border-left-color: var(--noticias);">
+                                <span>Insight Clave</span>
+                                Los usuarios no necesitan ver todos los canales, necesitan ver qué está pasando ahora mismo.
+                            </div>
+                        </div>
+                        <div class="wireframe-container">
+                            <div class="wireframe-title">Wireframe: Mosaico con miniaturas en vivo</div>
+                            <div class="wireframe-mosaic">
+                                <div class="wireframe-tile">Canal 1</div>
+                                <div class="wireframe-tile">Canal 2</div>
+                                <div class="wireframe-tile">Canal 3</div>
+                                <div class="wireframe-tile">Canal 4</div>
+                                <div class="wireframe-tile">Canal 5</div>
+                                <div class="wireframe-tile">Canal 6</div>
+                            </div>
+                            <div class="referentes">
+                                <span class="referente-tag">Referente: YouTube TV</span>
+                                <span class="referente-tag">Referente: FuboTV</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENE 4: BENEFICIOS -->
+        <section class="scene" id="scene-4">
+            <div class="scene-card">
+                <div class="scene-header">
+                    <div class="scene-number">4</div>
+                    <div class="scene-title">
+                        <h2>Beneficios: lo que esta solución le da al usuario</h2>
+                        <p class="context">Nueva pantalla de inicio "Para ti ahora".</p>
+                    </div>
+                </div>
+                <div class="scene-content">
+                    <div class="beneficios-visual">
+                        <div class="mosaico-preview">
+                            <div class="mosaico-header">
+                                <button class="filter-btn all">Para ti</button>
+                                <button class="filter-btn deportes">Deportes</button>
+                                <button class="filter-btn noticias">Noticias</button>
+                                <button class="filter-btn entretenimiento">Entretenimiento</button>
+                            </div>
+                            <div class="mosaico-grid">
+                                <div class="mosaico-tile featured" data-live="EN VIVO"><div class="tile-live"></div></div>
+                                <div class="mosaico-tile" data-live="EN VIVO"><div class="tile-live"></div></div>
+                                <div class="mosaico-tile" data-live="EN VIVO"><div class="tile-live"></div></div>
+                                <div class="mosaico-tile" data-live="EN VIVO"><div class="tile-live"></div></div>
+                                <div class="mosaico-tile" data-live="EN VIVO"><div class="tile-live"></div></div>
+                                <div class="mosaico-tile" data-live="EN VIVO"><div class="tile-live"></div></div>
+                            </div>
+                        </div>
+                        <div class="beneficios-lista">
+                            <div class="beneficio-item">
+                                <div class="beneficio-icon clock">⏱️</div>
+                                <div class="beneficio-text">
+                                    <h4>Encuentra en menos de 10 segundos</h4>
+                                    <p>Visualización instantánea del contenido disponible.</p>
+                                </div>
+                            </div>
+                            <div class="beneficio-item">
+                                <div class="beneficio-icon list">🚫</div>
+                                <div class="beneficio-text">
+                                    <h4>Sin scroll infinito</h4>
+                                    <p>Organización por categorías elimina la necesidad de explorar.</p>
+                                </div>
+                            </div>
+                            <div class="beneficio-item">
+                                <div class="beneficio-icon eye">👁️</div>
+                                <div class="beneficio-text">
+                                    <h4>Sabe qué hay en vivo sin buscar</h4>
+                                    <p>El contenido se muestra con miniaturas en tiempo real.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENE 5: IMPLEMENTACION -->
+        <section class="scene" id="scene-5">
+            <div class="scene-card">
+                <div class="scene-header">
+                    <div class="scene-number">5</div>
+                    <div class="scene-title">
+                        <h2>Implementación: cómo funciona la solución</h2>
+                        <p class="context">Flujo completo de navegación y experiencia multiplataforma.</p>
+                    </div>
+                </div>
+                <div class="scene-content">
+                    <div class="implementacion-visual">
+                        <div class="implementacion-step">
+                            <span class="step-number">1</span>
+                            <div class="step-title">Mosaico General</div>
+                            <div class="step-desc">Al abrir la app, mosaico con canales activos organizados por categoría.</div>
+                            <div class="step-preview">
+                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; width: 60%;">
+                                    <div class="mini-tile"></div>
+                                    <div class="mini-tile"></div>
+                                    <div class="mini-tile"></div>
+                                    <div class="mini-tile"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="implementacion-step">
+                            <span class="step-number">2</span>
+                            <div class="step-title">Filtro por Categoría</div>
+                            <div class="step-desc">Click en "Deportes" filtra el mosaico mostrando solo canales deportivos.</div>
+                            <div class="step-preview">
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; width: 60%;">
+                                    <div class="mini-tile" style="background: var(--deportes);"></div>
+                                    <div class="mini-tile" style="background: var(--deportes);"></div>
+                                    <div class="mini-tile" style="background: var(--deportes);"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="implementacion-step">
+                            <span class="step-number">3</span>
+                            <div class="step-title">Consistencia Móvil</div>
+                            <div class="step-desc">Misma experiencia en celular: mismo mosaico, mismos filtros.</div>
+                            <div class="step-preview" style="aspect-ratio: 9/16; max-height: 150px;">
+                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 3px; width: 50%;">
+                                    <div class="mini-tile"></div>
+                                    <div class="mini-tile"></div>
+                                    <div class="mini-tile"></div>
+                                    <div class="mini-tile"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="multiplataforma-note">
+                        <div class="device-icons">
+                            <div class="device-icon">📱</div>
+                            <div class="device-icon">📺</div>
+                        </div>
+                        <div class="multiplataforma-text">
+                            <h4>Experiencia Unificada</h4>
+                            <p>Misma pantalla de inicio, mismos filtros, misma lógica de navegación entre TV y celular.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENE 6: CONCLUSION -->
+        <section class="scene" id="scene-6">
+            <div class="scene-card">
+                <div class="scene-header">
+                    <div class="scene-number">6</div>
+                    <div class="scene-title">
+                        <h2>Conclusión: la oportunidad innovadora</h2>
+                        <p class="context">De 4 minutos a 8 segundos: transformación completa.</p>
+                    </div>
+                </div>
+                <div class="scene-content">
+                    <div class="conclusion-visual">
+                        <div class="antes-despues">
+                            <span class="status-badge antes">ANTES</span>
+                            <div class="comparacion-icon">😤</div>
+                            <div class="comparacion-tiempo antes">4:23</div>
+                            <p class="comparacion-label">minutos para encontrar algo</p>
+                            <p style="margin-top: 16px; font-size: 0.85rem; color: var(--zapping-text-secondary);">Lista interminable sin categorías. Frustración creciente.</p>
+                        </div>
+                        <div class="transformacion-arrow">
+                            <span>→</span>
+                            <span class="transformacion-badge">De 4 min a 8 seg</span>
+                            <span>→</span>
+                        </div>
+                        <div class="antes-despues despues">
+                            <span class="status-badge despues">DESPUÉS</span>
+                            <div class="comparacion-icon">😊</div>
+                            <div class="comparacion-tiempo despues">0:08</div>
+                            <p class="comparacion-label">segundos para estar viendo</p>
+                            <p style="margin-top: 16px; font-size: 0.85rem; color: var(--zapping-text-secondary);">Mosaico visual, filtros rápidos. Descubrimiento sin esfuerzo.</p>
+                        </div>
+                    </div>
+                    <div style="margin-top: 32px; text-align: center; padding: 24px; background: var(--zapping-gray-light); border-radius: 12px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 12px;">Propuesta de Valor</h3>
+                        <p style="color: var(--zapping-text-secondary); max-width: 700px; margin: 0 auto;">
+                            Rediseñar la navegación desde el descubrimiento visual convierte una fricción cotidiana en una ventaja competitiva: Zapping se posiciona como la plataforma de TV en vivo que menos esfuerzo le cuesta al usuario para encontrar lo que quiere ver.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVE MOCKUP -->
+        <section class="scene" id="scene-mockup">
+            <div class="interactive-mockup">
+                <div class="mockup-title">
+                    <h2>Mockup Interactivo</h2>
+                    <p>Prueba la nueva navegación con filtros por categoría</p>
+                </div>
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <div class="phone-header">
+                            <span class="phone-logo">ZAPPING</span>
+                            <span class="phone-time">21:30</span>
+                        </div>
+                        <div class="phone-content">
+                            <div class="phone-filters">
+                                <button class="phone-filter all active" style="background: #E50914;">Para ti</button>
+                                <button class="phone-filter deportes" style="background: #FF6B35;">Deportes</button>
+                                <button class="phone-filter noticias" style="background: #4ECDC4;">Noticias</button>
+                                <button class="phone-filter entretenimiento" style="background: #9B59B6;">Entretenimiento</button>
+                                <button class="phone-filter peliculas" style="background: #F39C12;">Películas</button>
+                            </div>
+                            <div class="phone-mosaic" id="phone-mosaic">
+                                <div class="phone-tile featured" data-category="entretenimiento">
+                                    <div class="live-dot"></div>
+                                    <span class="channel-name">CDF Premium</span>
+                                    <span class="live-text">● EN VIVO</span>
+                                </div>
+                                <div class="phone-tile" data-category="deportes">
+                                    <div class="live-dot"></div>
+                                    <span class="channel-name">ESPN</span>
+                                    <span class="live-text">● EN VIVO</span>
+                                </div>
+                                <div class="phone-tile" data-category="deportes">
+                                    <div class="live-dot"></div>
+                                    <span class="channel-name">Fox Sports</span>
+                                    <span class="live-text">● EN VIVO</span>
+                                </div>
+                                <div class="phone-tile" data-category="noticias">
+                                    <div class="live-dot"></div>
+                                    <span class="channel-name">CNN Chile</span>
+                                    <span class="live-text">● EN VIVO</span>
+                                </div>
+                                <div class="phone-tile" data-category="noticias">
+                                    <div class="live-dot"></div>
+                                    <span class="channel-name">24 Horas</span>
+                                    <span class="live-text">● EN VIVO</span>
+                                </div>
+                                <div class="phone-tile" data-category="entretenimiento">
+                                    <div class="live-dot"></div>
+                                    <span class="channel-name">HBO</span>
+                                    <span class="live-text">● EN VIVO</span>
+                                </div>
+                                <div class="phone-tile" data-category="peliculas">
+                                    <div class="live-dot"></div>
+                                    <span class="channel-name">Cinecanal</span>
+                                    <span class="live-text">● EN VIVO</span>
+                                </div>
+                                <div class="phone-tile" data-category="entretenimiento">
+                                    <div class="live-dot"></div>
+                                    <span class="channel-name">Universal</span>
+                                    <span class="live-text">● EN VIVO</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="phone-nav">
+                            <div class="phone-nav-item active">
+                                <span>🏠</span>
+                                Inicio
+                            </div>
+                            <div class="phone-nav-item">
+                                <span>🔍</span>
+                                Buscar
+                            </div>
+                            <div class="phone-nav-item">
+                                <span>📺</span>
+                                Guía
+                            </div>
+                            <div class="phone-nav-item">
+                                <span>👤</span>
+                                Perfil
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 24px; color: var(--zapping-text-secondary); font-size: 0.85rem;">
+                    💡 Haz clic en los filtros para ver cómo se reorganiza el mosaico
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>Mockup de mejora para Zapping | Storyboard: Vista en mosaico "Para ti ahora" y Filtros por categorías</p>
+        <p style="margin-top: 8px;">Problema: Navegación actual obliga a revisar toda la lista sin contexto | Solución: Mosaico visual con miniaturas en vivo</p>
+    </footer>
+
+    <script>
+        // Navigation
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const sceneId = btn.dataset.scene;
+                document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+                document.getElementById('scene-' + sceneId).classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Interactive mockup filters
+        document.querySelectorAll('.phone-filter').forEach(filter => {
+            filter.addEventListener('click', () => {
+                document.querySelectorAll('.phone-filter').forEach(f => f.classList.remove('active'));
+                filter.classList.add('active');
+                
+                const category = filter.classList.contains('all') ? 'all' : filter.classList[1];
+                const tiles = document.querySelectorAll('.phone-tile');
+                
+                tiles.forEach(tile => {
+                    if (category === 'all' || tile.dataset.category === category) {
+                        tile.style.opacity = '1';
+                        tile.style.transform = 'scale(1)';
+                    } else {
+                        tile.style.opacity = '0.3';
+                        tile.style.transform = 'scale(0.95)';
+                    }
+                });
+            });
+        });
+
+        // Auto-scroll through scenes for demo
+        let currentScene = 1;
+        const totalScenes = 6;
+
+        function nextScene() {
+            currentScene = currentScene % totalScenes + 1;
+            document.querySelector(`[data-scene="${currentScene}"]`).click();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                nextScene();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                currentScene = currentScene - 1;
+                if (currentScene < 1) currentScene = totalScenes;
+                document.querySelector(`[data-scene="${currentScene}"]`).click();
+            }
+        });
+    </script>
+</body>
+</html>
